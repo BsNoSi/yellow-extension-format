@@ -1,6 +1,6 @@
 # Format
 
-> V 1.1.0 (Requires YELLOW 0.8.4 or higher)
+> V 1.3.0 (Requires YELLOW 0.8.4 or higher)
 
 Add fomatting without using HTML in Markdown.
 
@@ -15,33 +15,73 @@ To uninstall delete the [extension files](extension.ini).
 
 ## Usage
 
-Create a `[format class style]` shortcut.  
+Create a `[format class style id]` shortcut.  
 
-The following arguments are available, all but the first argument are optional:
+###### Arguments
 
 `class` = a class defined in a css-file attached to the page
-`Style` = optional: an additional style definition
+`style` = optional: an additional style definition     
+`id` = an identifier for adressing the area or assigning a `#format` from an attached css-file
 
-`[format]`  with no parameter creates an information string "**[format class style]**" in the preview/final page of YELLOW .
+> `[format]`  with no parameter creates an information string "**[format class style id]**" in the preview/final page.
 
-`[format - style]` creates a container with style information only.
+###### Examples
 
+~~~
+[format news]
 
-## How to create a formatted block
+[format - "width=100%"]
 
-A block needs *always* an opening and an ending:
+[format - - special]
 
-```markdown
-…
-[format classname]
-container content
+… bla …
+
+[format /]
+
 [format end]
-…
-```
 
-> Instead of `[format end]` you can use `[format /]` as a shortcut.
+[format end news]
+~~~
 
+> You can use either `/` or `end` for closing an area. Naming/commenting of closing is possible in both cases and is optional.
 
+This structure in markdown file will create this html
+
+~~~
+<div class="news">
+<div style="width=100%">
+<div id="special">
+… bla …
+</div>
+</div>
+</div>
+~~~
+
+Placing `[format …]` shortcuts like this
+
+~~~
+[format news][format - "width=100%"][format - - special]
+… bla …
+[format /][format end][format end news]
+~~~
+
+it will lead to this html
+
+~~~php+HTML
+<p><div class="news"><div style="width=100%"><div id="special">
+… bla …
+</div></div></div></p>
+~~~
+
+The parser creates in this case  an additional `<p>` tag. This might be a challenge or and advantage, depending to your style definition for paragraphs.
+
+> **A block needs *always* an opening `[format…]`and a closing `[format /]`**, otherwise your page structure may be damaged!
+
+## History
+
+2019-05-05 Initial Release
+
+2019-12-12 Improved code, `id` added, improved `README
 
 ## Developer
 
