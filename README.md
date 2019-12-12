@@ -19,7 +19,7 @@ Create a `[format class style id]` shortcut.
 
 ###### Arguments
 
-`class` = a class defined in a css-file attached to the page
+`class` = a class defined in a css-file attached to the page     
 `style` = optional: an additional style definition     
 `id` = an identifier for adressing the area or assigning a `#format` from an attached css-file
 
