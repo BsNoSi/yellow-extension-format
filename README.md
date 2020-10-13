@@ -1,6 +1,8 @@
 # Format
 
-> V 1.3.0 (Requires YELLOW 0.8.4 or higher)
+V 1.4
+
+> Tested with Yellow 0.815
 
 Add fomatting without using HTML in Markdown.
 
@@ -79,9 +81,13 @@ The parser creates in this case  an additional `<p>` tag. This might be a challe
 
 ## History
 
-2019-05-05 Initial Release
+2020-10-13 c 1.4: No functional changes cleanup.
 
-2019-12-12 Improved code, `id` added, improved `README
+2020-01-24 v 1.4: Missing " added and code clean up
+
+2019-12-12 Improved code, `id` added, improved `README`
+
+2019-05-05 Initial Release
 
 ## Developer
 
