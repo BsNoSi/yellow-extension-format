@@ -6,36 +6,35 @@
 // requires YELLOW 0.8.4 or higher
 
 class YellowFormat {
-    const VERSION = "1.3";
-	const TYPE = "feature";
-    public $yellow;         //access to API
-	// Handle initialisation
-	function onLoad($yellow) {
-		$this->yellow = $yellow;
+  const VERSION = "1.4";
+	
+  public $yellow;
+
+  function onLoad($yellow) {
+   $this->yellow = $yellow;
+  }
+
+  public function onParseContentShortcut($page, $name, $text, $type) {
+   $output = NULL;
+   if ($name=="format" && ($type=="block" || $type=="inline")) {
+	list($class, $style, $id) = $this->yellow->toolbox->getTextArgs($text);
+	if(strlen($text)==0){
+		$output = '<b>[format class style id]</b>';
 	}
-	// Handle page content parsing of custom block
-	public function onParseContentShortcut($page, $name, $text, $type) {
-		$output = NULL;
-		if ($name=="format" && ($type=="block" || $type=="inline")) {
-			list($class, $style, $id) = $this->yellow->toolbox->getTextArgs($text);
-		   if(strlen($text)==0){
-			  $output = '<b>[format class style id]</b>';
-		   }
-			else {
-				if($class == "end" || $class == "/")
-				{
-					$output = "</div>";
-				}
-				else {
-					$output = '<div';
-					$output .= ($id<>"") ? ' id="' . $id . '"' : "";
-					$output .= ($class<>"") ? ' class="'.$class.'"' : "";
-					$output .= ($style<>"") ? ' style="' . $style . '"' : "";
-					$output .= '>';
-					}
-				}
-			}
-		return $output;
+	else {
+		if($class == "end" || $class == "/") {
+			$output = "</div>";
+		}
+		else {
+			$output = "<div";
+			$output .= ($id<>"") ? " id=\"" . $id . "\"" : "";
+			$output .= ($class<>"") ? " class=\"".$class."\"" : "\"";
+			$output .= ($style<>"") ? " style=\"" . $style . "\"" : "";
+			$output .= ">";
 		}
 	}
+   }
+   return $output;
+  }
+}
 ?>
