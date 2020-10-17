@@ -3,10 +3,9 @@
 // Copyright ©2018-now Norbert Simon, https://nosi.de for
 // YELLOW Copyright ©2013-now Datenstrom, http://datenstrom.se
 // This file may be used and distributed under the terms of the public license.
-// requires YELLOW 0.8.4 or higher
 
 class YellowFormat {
-  const VERSION = "1.4";
+  const VERSION = "1.4.1";
 	
   public $yellow;
 
@@ -17,7 +16,7 @@ class YellowFormat {
   public function onParseContentShortcut($page, $name, $text, $type) {
    $output = NULL;
    if ($name=="format" && ($type=="block" || $type=="inline")) {
-	list($class, $style, $id) = $this->yellow->toolbox->getTextArgs($text);
+	list($class, $style, $id) = $this->yellow->toolbox->getTextArguments($text);
 	if(strlen($text)==0){
 		$output = '<b>[format class style id]</b>';
 	}
