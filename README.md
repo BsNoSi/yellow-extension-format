@@ -1,8 +1,8 @@
 # Format
 
-Version 1.4.1
+Version 1.4.2
 
-> Tested with core version 0.8.23
+> Tested with Version 0.8.33 / Release 0.8.16 of Yellow
 
 ## Application
 
@@ -95,6 +95,8 @@ The parser creates in this case  an additional `<p>` tag. This might be a challe
 
 
 ## History
+
+2020-11-21: Alignment to install changes
 
 2020-10-17: v 1.4.1: API changes applied.
 
